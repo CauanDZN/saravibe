@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Saravibe</title>
+    <link rel="stylesheet" href="header.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.svg" alt="Saravibe Logo">
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <nav class="nav" id="mobile-menu">
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li class="dropdown">
+                    <a href="#">Produtos ▾</a>
+                    <ul class="submenu">
+                        <li><a href="#">Produto 1</a></li>
+                        <li><a href="#">Produto 2</a></li>
+                        <li><a href="#">Produto 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Parceiros</a></li>
+                <li><a href="#">Clientes</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            <div class="languages">
+                <img src="usa.svg" alt="English">
+                <img src="brazil.svg" alt="Português">
+                <img src="spain.svg" alt="Español">
+                <img src="france.svg" alt="Français">
+            </div>
+        </nav>
+    </header>
+    
+    <script>
+        function toggleMenu() {
+            document.getElementById("mobile-menu").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
