@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Salmond';
+    src: url('fonts/Salmond Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Salmond', Arial, sans-serif;
+}
+
+.footer {
+    background-color: #000;
+    color: #008080;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    height: 400px; /* Ajuste conforme necessário */
+    position: relative;
+    overflow: hidden; /* Garante que nada ultrapasse */
+}
+
+/* Área do título e contato totalmente à esquerda */
+.footer .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    z-index: 2; /* Mantém o texto sobre a onda */
+}
+
+.footer .title h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer .contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer .contact p {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Onda ocupando toda a parte direita e sendo responsiva */
+.footer .wave-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%; /* Agora ocupa toda a largura da tela */
+    height: 100%; /* Garante que a onda tenha a altura total do footer */
+    z-index: 1; /* Atrás do conteúdo */
+}
+
+.footer .wave {
+    width: 100%;
+    height: 100%;
+    background: url('icon-saravibe.svg') no-repeat center center;
+    background-size: 100% auto; /* Garante que a imagem da onda seja redimensionada proporcionalmente */
+    background-position: 85% center; /* Move a onda mais para a direita */
+    margin: 0px 0px 0px 600px;
+}
+
+/* Responsividade */
+@media (max-width: 1080px) {
+    .footer {
+        flex-direction: column; /* Empilhar os elementos no mobile */
+        height: auto;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .footer .left {
+        align-items: center;
+        width: 100%;
+    }
+
+    .footer .wave-container {
+        position: relative;
+        width: 100%;
+        height: 150px; /* Diminui a altura no mobile */
+    }
+
+    .footer .wave {
+        background-size: cover; /* Garante que a onda cubra toda a área */
+        background-position: center center; /* Ajuste para o mobile */
+        margin: 0px 0px 0px 0px;
+    }
+}
