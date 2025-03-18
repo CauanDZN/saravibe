@@ -19,9 +19,10 @@
                 <li class="dropdown">
                     <a href="#">Produtos ▾</a>
                     <ul class="submenu">
-                        <li><a href="#">Produto 1</a></li>
-                        <li><a href="#">Produto 2</a></li>
-                        <li><a href="#">Produto 3</a></li>
+                        <li><a href="#">Acessórios</a></li>
+                        <li><a href="#">Componentes</a></li>
+                        <li><a href="#">Transformadores</a></li>
+                        <li><a href="#">Matéria Prima</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Parceiros</a></li>
@@ -41,6 +42,15 @@
         function toggleMenu() {
             document.getElementById("mobile-menu").classList.toggle("active");
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdown = document.querySelector(".dropdown > a");
+
+            dropdown.addEventListener("click", function (event) {
+                event.preventDefault();
+                this.parentElement.classList.toggle("active");
+            });
+        });
     </script>
 </body>
 </html>
