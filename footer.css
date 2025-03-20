@@ -15,87 +15,106 @@ body {
     font-family: 'Salmond', Arial, sans-serif;
 }
 
+/* Rodapé */
 .footer {
     background-color: #000;
     color: #008080;
     padding: 20px;
     display: flex;
-    align-items: center;
-    height: 400px; /* Ajuste conforme necessário */
-    position: relative;
-    overflow: hidden; /* Garante que nada ultrapasse */
-}
-
-/* Área do título e contato totalmente à esquerda */
-.footer .left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     align-items: flex-start;
-    flex: 1;
-    z-index: 2; /* Mantém o texto sobre a onda */
+    height: 294px;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
 }
 
-.footer .title h2 {
-    font-size: 24px;
-    font-weight: bold;
+/* Container principal */
+.footer-container {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Mantém alinhado à esquerda */
+    align-items: center;
+    position: relative;
 }
 
-.footer .contact {
+/* Agrupando "Contato" e os contatos */
+.contact-group {
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Reduzindo o espaço entre "Contato" e os números */
+    margin-top: 40px;
+}
+
+/* Estilizando "Contato" */
+.title {
+    font-family: 'Salmond', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 75px;
+    color: #fff;
+}
+
+/* Div dos contatos */
+.contact-info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 20px; /* Espaço entre WhatsApp e Email */
 }
 
-.footer .contact p {
+/* Estilizando os textos ao lado */
+.contact-info p {
+    font-family: 'Salmond', Arial, sans-serif;
+    font-weight: 450;
     font-size: 16px;
     display: flex;
     align-items: center;
     gap: 8px;
+    color: #fff;
 }
 
-/* Onda ocupando toda a parte direita e sendo responsiva */
-.footer .wave-container {
+/* Imagem de onda */
+.custom-image {
     position: absolute;
-    right: 0;
     top: 0;
-    width: 100%; /* Agora ocupa toda a largura da tela */
-    height: 100%; /* Garante que a onda tenha a altura total do footer */
-    z-index: 1; /* Atrás do conteúdo */
-}
-
-.footer .wave {
+    right: 0;
     width: 100%;
     height: 100%;
-    background: url('icon-saravibe.svg') no-repeat center center;
-    background-size: 100% auto; /* Garante que a imagem da onda seja redimensionada proporcionalmente */
-    background-position: 85% center; /* Move a onda mais para a direita */
-    margin: 0px 0px 0px 600px;
+    object-fit: contain;
+    transform: translate(300px, 0px) scale(1);
 }
 
 /* Responsividade */
-@media (max-width: 1080px) {
+@media (max-width: 1300px) {
     .footer {
-        flex-direction: column; /* Empilhar os elementos no mobile */
+        flex-direction: column;
         height: auto;
         padding: 40px 20px;
         text-align: center;
     }
 
-    .footer .left {
+    .footer-container {
+        flex-direction: column;
         align-items: center;
-        width: 100%;
     }
 
-    .footer .wave-container {
-        position: relative;
-        width: 100%;
-        height: 150px; /* Diminui a altura no mobile */
+    .contact-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
-    .footer .wave {
-        background-size: cover; /* Garante que a onda cubra toda a área */
-        background-position: center center; /* Ajuste para o mobile */
-        margin: 0px 0px 0px 0px;
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .custom-image {
+        transform: none;
+        opacity: 0.3;
     }
 }
