@@ -7,48 +7,71 @@
     <link rel="stylesheet" href="header.css">
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="logo.svg" alt="Saravibe Logo">
-        </div>
-        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-        <nav class="nav" id="mobile-menu">
-            <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li class="dropdown">
-                    <a href="#">Produtos ▾</a>
-                    <ul class="submenu">
-                        <li><a href="#">Acessórios</a></li>
-                        <li><a href="#">Componentes</a></li>
-                        <li><a href="#">Transformadores</a></li>
-                        <li><a href="#">Matéria Prima</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Parceiros</a></li>
-                <li><a href="#">Clientes</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-            <div class="languages">
-                <img src="usa.svg" alt="English">
-                <img src="brazil.svg" alt="Português">
-                <img src="spain.svg" alt="Español">
-                <img src="france.svg" alt="Français">
+    <header id="masthead" class="site-header">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.svg" alt="Saravibe Logo">
             </div>
-        </nav>
-    </header>
     
+            <!-- Ícone para menu mobile -->
+            <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+    
+            <nav class="nav" id="mobile-menu">
+                <!-- Menu Principal -->
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Produtos</a>
+                        <ul class="submenu">
+                            <li><a href="#">Acessórios</a></li>
+                            <li><a href="#">Componentes</a></li>
+                            <li><a href="#">Transformadores</a></li>
+                            <li><a href="#">Matéria Prima</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Parceiros</a></li>
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+    
+                <!-- Seção de idiomas -->
+                <div class="languages">
+                    <img src="usa.svg" alt="English">
+                    <img src="brazil.svg" alt="Português">
+                    <img src="spain.svg" alt="Español">
+                    <img src="france.svg" alt="Français">
+                    <img src="china.png" alt="中文">
+                </div>
+            </nav>
+        </div>
+    </header>
+
     <script>
-        function toggleMenu() {
-            document.getElementById("mobile-menu").classList.toggle("active");
-        }
-
         document.addEventListener("DOMContentLoaded", function () {
-            const dropdown = document.querySelector(".dropdown > a");
+            const dropdowns = document.querySelectorAll(".menu-item-has-children > a");
 
-            dropdown.addEventListener("click", function (event) {
-                event.preventDefault();
-                this.parentElement.classList.toggle("active");
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener("click", function (event) {
+                    event.preventDefault();  // Impede o comportamento padrão de navegação
+                    this.parentElement.classList.toggle("active");  // Alterna a classe 'active'
+                });
+            });
+
+            // Seleciona o menu mobile e o botão de alternância (menu-toggle)
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            // Mostra ou esconde o menu ao clicar no botão
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Fecha o menu se o clique ocorrer fora do menu (no fundo azul)
+            document.addEventListener('click', (event) => {
+                if (mobileMenu.classList.contains('active') && !mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    mobileMenu.classList.remove('active');
+                }
             });
         });
     </script>
