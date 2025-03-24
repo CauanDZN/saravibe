@@ -25,15 +25,14 @@ body {
     align-items: flex-start;
     height: 294px;
     width: 100%;
-    position: absolute;
+    position: relative;
     overflow: hidden;
-    top: 0;
-    right: 0;
+    margin-top: auto;
 }
 
 /* Container principal */
 .footer-container {
-    max-width: 1440px;
+    max-width: 1140px;
     width: 100%;
     display: flex;
     justify-content: flex-start; /* Mantém alinhado à esquerda */
@@ -44,8 +43,7 @@ body {
 /* Agrupando "Contato" e os contatos */
 .contact-group {
     display: flex;
-    align-items: center;
-    gap: 80px; /* Reduzindo o espaço entre "Contato" e os números */
+    gap: 40px;
     margin-top: 40px;
 }
 
@@ -53,16 +51,15 @@ body {
 .title {
     font-family: 'Salmond', Arial, sans-serif;
     font-weight: 600;
-    font-size: 56px;
+    font-size: 52px;
     line-height: 75px;
-    color: #fff;
+    color: #1E9B97;
 }
 
 /* Div dos contatos */
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaço entre WhatsApp e Email */
 }
 
 /* Estilizando os textos ao lado */
@@ -74,21 +71,33 @@ body {
     align-items: center;
     gap: 8px;
     color: #fff;
+    z-index: 2;
+    margin-bottom: 10px;
 }
 
 /* Imagem de onda */
-.custom-image {
+.custom-wave {
     position: absolute;
     top: 0;
     right: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transform: translate(300px, 0px) scale(1);
+    transform: translate(340px, 0px) scale(1);
+    animation: wave 10s infinite linear;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+@media (max-width: 1300px) {
+    .custom-wave {
+        opacity: 0.3;
+        transition: opacity 0.3s;
+    }
 }
 
 /* Responsividade */
-@media (max-width: 1300px) {
+@media (max-width: 768px) {
     .footer {
         flex-direction: column;
         height: auto;
@@ -113,8 +122,9 @@ body {
         gap: 10px;
     }
 
-    .custom-image {
+    .custom-wave {
         transform: none;
         opacity: 0.3;
+        object-fit: cover;
     }
 }
